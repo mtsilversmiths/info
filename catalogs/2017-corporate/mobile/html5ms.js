@@ -1157,7 +1157,7 @@ FlipBook.prototype = {
         t.value = Std.string(val)
     },
     setPageCount: function(val) {
-        this.tbPageCount.innerHTML = "/ " + Std.string(val)
+        this.tbPageCount.innerHTML = "/&nbsp;" + Std.string(val)
     },
     onEnterPage: function() {
         this.updateFullText();
@@ -2523,7 +2523,7 @@ RunTime.tryUnlock = function(pwd) {
     } else js.Lib.window.alert(L.s("PasswordError"))
 }
 RunTime.afterRequestBookInfo=function(){RunTime.flipBook.cvsOthers.innerHTML="";RunTime.clearPopupContents();RunTime.requestPages();RunTime.useAnalyticsUA(RunTime.book.analyticsUA,RunTime.book.bookId)}
-RunTime.showLoadingLogo=function(loadingUrl){if(loadingUrl==null||loadingUrl=="")return;RunTime.loadingLogo.innerHTML="<img src='../../../2017-corporate/mobile/"+loadingUrl+"'>";RunTime.loadingLogo.style.top=(RunTime.clientHeight-RunTime.loadingLogo.clientHeight)/2+"px";RunTime.loadingLogo.style.left=(RunTime.clientWidth-RunTime.loadingLogo.clientWidth)/2+"px";RunTime.loadingLogo.style.display="inline"}
+RunTime.showLoadingLogo=function(loadingUrl){if(loadingUrl==null||loadingUrl=="")return;RunTime.loadingLogo.innerHTML="<img src='"+loadingUrl+"'>";RunTime.loadingLogo.style.top=(RunTime.clientHeight-RunTime.loadingLogo.clientHeight)/2+"px";RunTime.loadingLogo.style.left=(RunTime.clientWidth-RunTime.loadingLogo.clientWidth)/2+"px";RunTime.loadingLogo.style.display="inline"}
 RunTime.hideLoadingLogo=function(){RunTime.loadingLogo.innerHTML="";RunTime.loadingLogo.style.display="none"}
 RunTime.requestPages = function() {
     orc.utils.Util.request(RunTime.urlPageInfo,
@@ -2799,7 +2799,7 @@ RunTime.sendEmailByService = function() {
     js.Lib.window.document.getElementById("subject").setAttribute("value", subject);
     var m = js.Lib.window.document.getElementById("sharemsg");
     var msg = m.value;
-    msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/><br /> <br /><a href='" + RunTime.book.shareHref + "' target='_black'><img src='../../../2017-corporate/mobile/" + baseUrl + "/" + RunTime.book.pages[0].urlThumb + "' ><a/>";
+    msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/><br /> <br /><a href='" + RunTime.book.shareHref + "' target='_black'><img src='" + baseUrl + "/" + RunTime.book.pages[0].urlThumb + "' ><a/>";
     RunTime.sendService = new XMLHttpRequest();
     var query = "tomail=" + Std.string(tomail.value) + "&frommail=" + Std.string(frommail.value) + "&subject=" + subject + "&message=" + msg;
     RunTime.sendService.open("get", RunTime.book.gateway + "?" + query, true);
@@ -2812,7 +2812,7 @@ RunTime.sendEmailByForm = function() {
     js.Lib.window.document.getElementById("subject").setAttribute("value", subject);
     var m = js.Lib.window.document.getElementById("sharemsg");
     var msg = m.value;
-    msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/><br /> <br /><a href='" + RunTime.book.shareHref + "' target='_black'><img src='../../../2017-corporate/mobile/" + RunTime.book.pages[0].urlThumb + "' ><a/>";
+    msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/><br /> <br /><a href='" + RunTime.book.shareHref + "' target='_black'><img src='" + RunTime.book.pages[0].urlThumb + "' ><a/>";
     var b = js.Lib.window.document.getElementById("sendEmail");
     b.submit()
 }
@@ -4329,10 +4329,10 @@ core.HtmlHelper.toContentsHtml=function(xml){var roots=orc.utils.Util.getXmlChil
 core.HtmlHelper.toContentsNodeHtml=function(xml){var childs=orc.utils.Util.getXmlChilds(xml);var s="";s+="<ul>";s+="<li>";s+=core.HtmlHelper.toContentsNodeHtmlCore(xml);s+="</li>";if(childs.length>0){s+="<ul>";var _g1=0,_g=childs.length;while(_g1<_g){var i=_g1++;s+=core.HtmlHelper.toContentsNodeHtml(childs[i])}s+="</ul>"}s+="</ul>";return s}
 core.HtmlHelper.toContentsNodeHtmlCore=function(xml){var title=xml.get("title");var page=xml.get("page");var pageVal=0;if(page!=null&&page!=""){pageVal=Std.parseInt(page);page=Std.string(pageVal-1)}return"<span onclick=\"gotoPage("+page+");\">"+title+"</span>"}
 core.HtmlHelper.toSnsHtml=function(xml){var roots=orc.utils.Util.getXmlChilds(xml);if(roots.length!=1)return"";var root=roots[0];var childs=orc.utils.Util.getXmlChilds(root);var s="";s+="<div id='snsbox' style='float:left;width: 100%;height: 250px;'>";if(childs.length>0){var _g1=0,_g=childs.length;while(_g1<_g){var i=_g1++;s+=core.HtmlHelper.toSnsNodeHtml(childs[i])}}s+="</div>";return s}
-core.HtmlHelper.toSnsNodeHtml=function(xml){var s="<p style='float:left;width:150px;height:20px;'>";s+="<a href='"+xml.get("href")+"'><img style='vertical-align:middle;' src='../../../2017-corporate/mobile/"+xml.get("logoUrl")+"'></a>";s+="<span onclick=\"RunTime.navigateUrl('"+xml.get("href")+"')\" style='vertical-align:middle;'>"+xml.get("name")+"</span>";s+="</p>";return s}
+core.HtmlHelper.toSnsNodeHtml=function(xml){var s="<p style='float:left;width:150px;height:20px;'>";s+="<a href='"+xml.get("href")+"'><img style='vertical-align:middle;' src='"+xml.get("logoUrl")+"'></a>";s+="<span onclick=\"RunTime.navigateUrl('"+xml.get("href")+"')\" style='vertical-align:middle;'>"+xml.get("name")+"</span>";s+="</p>";return s}
 core.HtmlHelper.toEmailHtml = function() {
     var s = "";
-    s += "<form  id='sendEmail' action='../../../2017-corporate/mobile/" + RunTime.book.gateway + "' method='post'>";
+    s += "<form  id='sendEmail' action='" + RunTime.book.gateway + "' method='post'>";
     s += "<table border='none' class='email'>";
     s += "<tr><td>" + L.s("To", "To") + ":</td><td><input  id='tomail' type='text' name='tomail' /></td></tr>";
     s += "<tr><td>" + L.s("YourName", "Your Name") + ":</td><td><input id='yname' type='text' name='yourName'/></td></tr>";
@@ -4345,7 +4345,7 @@ core.HtmlHelper.toEmailHtml = function() {
     return s
 }
 core.HtmlHelper.toThumbsHtml=function(pages){var s="";var _g1=0,_g=pages.length;while(_g1<_g){var i=_g1++;var page=pages[i];s+=core.HtmlHelper.toThumbsNodeHtml(page)}return s}
-core.HtmlHelper.toThumbsNodeHtml=function(page){return"<img class=\"thumb\" src=../../../2017-corporate/mobile//""+page.urlThumb+"/" onclick=\"gotoPage("+page.num+"); \" />"}
+core.HtmlHelper.toThumbsNodeHtml=function(page){return"<img class=\"thumb\" src=\""+page.urlThumb+"\" onclick=\"gotoPage("+page.num+"); \" />"}
 core.HtmlHelper.toBookmarksHtml = function(bookmarks, singleMode, lbEnable, rbEnable) {
     var s = "";
     s += "<div id=\"op\">";
@@ -4448,7 +4448,7 @@ core.HtmlHelper.toPopupImageHtml = function(item, success) {
         s = "";
         s += "<div id=\"popupImage\" style=\"position:absolute; z-index:200;left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; background-color:#ffffff;transform: scale(0.2);transition: 0ms; -ms-transform: scale(0.2);-ms-transition: 0ms;\">";
         s += "<img src=\"" + Std.string(item.destination) + "\" style=\"width:" + Std.string(w) + "px;height:" + Std.string(h) + "px;\" />";
-        s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+        s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
         s += "</div>";
         haxe.Log.trace(s, {
             fileName: "HtmlHelper.hx",
@@ -4461,7 +4461,7 @@ core.HtmlHelper.toPopupImageHtml = function(item, success) {
         s += "<div style=\"position:absolute;z-index:200; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; \">";
         s += "<div style=\"margin:0 auto; \">";
         s += "<img src=\"" + Std.string(item.destination) + "\" style=\"max-width:" + Std.string(w) + "px;max-height:" + Std.string(h) + "px;\" />";
-        s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+        s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
         s += "</div>";
         s += "</div>"
     }
@@ -4487,7 +4487,7 @@ core.HtmlHelper.toPopupVideoHtml = function(item) {
         s += "</iframe>";
         s += "</div>"
     }
-    s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+    s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
     s += "</div>";
     return s
 }
@@ -4503,18 +4503,18 @@ core.HtmlHelper.toPopupPageAudiosHtml = function(audio, isLeft) {
         s += "<div style=\"position:absolute; z-index:202;left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; \">";
         s += "<audio class=\"video-js\" src=\"" + audio.url + "\" width=\"" + Std.string(Math.round(w)) + "\" height=\"" + Std.string(Math.round(h)) + "\" controls autoplay >";
         s += "</audio>";
-        s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearLeftBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+        s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearLeftBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
         s += "</div>"
     } else {
         s += "<div style=\"position:absolute; z-index:202;left:" + Std.string(RunTime.clientWidth / 2 + left | 0) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; \">";
         s += "<audio class=\"video-js\" src=\"" + audio.url + "\" width=\"" + Std.string(Math.round(w)) + "\" height=\"" + Std.string(Math.round(h)) + "\" controls autoplay >";
         s += "</audio>";
-        s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearRightBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+        s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearRightBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
         s += "</div>"
     }
     return s
 }
-core.HtmlHelper.toPopupAudioHtml=function(item){var w=200;var h=40;var left=20;var top=20;var s="";s+="<div style=\"position:absolute; z-index:203;left:"+Std.string(left)+"px; top:"+Std.string(top)+"px; width:"+Std.string(w)+"px; height:"+Std.string(h)+"px; \">";s+="<audio class=\"video-js\" src=../../../2017-corporate/mobile//""+Std.string(item.destination)+"/" width=\""+Std.string(Math.round(w))+"\" height=\""+Std.string(Math.round(h))+"\" controls autoplay >";s+="</audio>";s+="<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";s+="</div>";return s}
+core.HtmlHelper.toPopupAudioHtml=function(item){var w=200;var h=40;var left=20;var top=20;var s="";s+="<div style=\"position:absolute; z-index:203;left:"+Std.string(left)+"px; top:"+Std.string(top)+"px; width:"+Std.string(w)+"px; height:"+Std.string(h)+"px; \">";s+="<audio class=\"video-js\" src=\""+Std.string(item.destination)+"\" width=\""+Std.string(Math.round(w))+"\" height=\""+Std.string(Math.round(h))+"\" controls autoplay >";s+="</audio>";s+="<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";s+="</div>";return s}
 core.HtmlHelper.toPopupHtml = function(item) {
     var w = 600;
     var h = 480;
@@ -4527,11 +4527,11 @@ core.HtmlHelper.toPopupHtml = function(item) {
     var s = "";
     s += "<div id=\"popupMessage\" style=\"position:absolute; z-index:204; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; background-color:#ffffff; text-align:left;transform: scale(0.2);transition: 1s ease-out;-ms-transform: scale(0.2);-ms-transition:1s ease-out; -webkit-transform: scale(0.2); -webkit-transition: 1s ease-out; \">";
     s += Std.string(item.htmlText);
-    s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+    s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
     s += "</div>";
     return s
 }
-core.HtmlHelper.toBookmarkPopupHtml=function(item){var w=600;var h=480;var left=(RunTime.clientWidth-w)/2|0;var top=(RunTime.clientHeight-h)/2|0;var s="";s+="<div style=\"position:absolute; z-index:104; left:"+Std.string(left)+"px; top:"+Std.string(top)+"px; width:"+Std.string(w)+"px; height:"+Std.string(h)+"px; background-color:#ffffff; text-align:left; \">";s+="<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";s+="</div>";return s}
+core.HtmlHelper.toBookmarkPopupHtml=function(item){var w=600;var h=480;var left=(RunTime.clientWidth-w)/2|0;var top=(RunTime.clientHeight-h)/2|0;var s="";s+="<div style=\"position:absolute; z-index:104; left:"+Std.string(left)+"px; top:"+Std.string(top)+"px; width:"+Std.string(w)+"px; height:"+Std.string(h)+"px; background-color:#ffffff; text-align:left; \">";s+="<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";s+="</div>";return s}
 core.HtmlHelper.toNotePopupHtml = function(item, szSaveFunName, szDeleteFunName) {
     var w = 300;
     var h = 200;
@@ -4542,7 +4542,7 @@ core.HtmlHelper.toNotePopupHtml = function(item, szSaveFunName, szDeleteFunName)
     var left = (RunTime.clientWidth - w) / 2 | 0;
     var top = (RunTime.clientHeight - h) / 2 | 0;
     var s = "";
-    s += "<div style=\"position:absolute; z-index:800; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px;  \"><div style=\"margin:0 0; position:absolute; background-color:black;-webkit-border-radius:10px; border:1px solid #ccc; opacity:0.6;width:300px; height:200px;\"></div><div style=\"position:absolute;top:10px; left:10px; width:280px;background-color:#ffffff; border:1px solid #ccc;margin:0 0;\"><div style=\"width:280px; height:150px; background:#ffffff\"><textarea id=\"textNote\" style=\"width:275px; height:145px; border:0px\">" + Std.string(item.note.text) + "</textarea></div><img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-20px;top:-20px;\" /></div><div style=\"position:absolute;top:182px; left:10px;width:280px; margin:0 0; \"><img onclick=\"" + szSaveFunName + "()\" src=\"content/images/save.png\" style=\"position:absolute;left:5px; top:-16px\"/><img onclick=\"" + szDeleteFunName + "()\" src=\"content/images/garbage.png\" style=\"position:absolute;left:75px; top:-16px\"/></div></div>";
+    s += "<div style=\"position:absolute; z-index:800; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px;  \"><div style=\"margin:0 0; position:absolute; background-color:black;-webkit-border-radius:10px; border:1px solid #ccc; opacity:0.6;width:300px; height:200px;\"></div><div style=\"position:absolute;top:10px; left:10px; width:280px;background-color:#ffffff; border:1px solid #ccc;margin:0 0;\"><div style=\"width:280px; height:150px; background:#ffffff\"><textarea id=\"textNote\" style=\"width:275px; height:145px; border:0px\">" + Std.string(item.note.text) + "</textarea></div><img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-20px;top:-20px;\" /></div><div style=\"position:absolute;top:182px; left:10px;width:280px; margin:0 0; \"><img onclick=\"" + szSaveFunName + "()\" src=\"content/images/save.png\" style=\"position:absolute;left:5px; top:-16px\"/><img onclick=\"" + szDeleteFunName + "()\" src=\"content/images/garbage.png\" style=\"position:absolute;left:75px; top:-16px\"/></div></div>";
     return s
 }
 core.HtmlHelper.toInputPwdHtml = function() {
@@ -4563,7 +4563,7 @@ core.HtmlHelper.toInputUnlockPwdHtml = function() {
     var pos = "position:absolute;z-index:200; left:" + Std.string(Math.round(left)) + "px; top:" + Std.string(Math.round(top)) + "px;";
     var s = "";
     s += "<div id=\"inputBox\" style=\" " + pos + " width:300px; height:120px;background-color:#CCCCCC; \">";
-    s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-10px;top:-10px;\" />";
+    s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-10px;top:-10px;\" />";
     s += "<p>" + L.s("NeedPassword") + "</p>";
     s += "<input id=\"tbKeyword\" type=\"password\" style=\"width:120px; height:20px; \"  onkeypress=\"return onUnlockKeyPress(event)\" />";
     s += "<input type=\"button\" style=\"height:20px; \" value=\"" + L.s("Submit") + "\" onclick=\"unlockPage(); \" />";

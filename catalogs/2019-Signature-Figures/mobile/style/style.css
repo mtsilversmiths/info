@@ -1,4 +1,4 @@
-/* CSS Document */
+﻿/* CSS Document */
 .version{version:2018093001;}
 html{width:100%;height:100%;position:fixed;left:0;top:0;margin:0;padding:0;}
 body{overflow:hidden!important;width:100%;height:100%;margin:0;padding:0!important;-ms-transform:translate(0);border:0;left:0;top:0;position:fixed;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
@@ -1293,7 +1293,7 @@ i,u{font-style:normal;text-decoration:none;}
   /*left: auto;*/
   height: 20px;
   width: 100%;
-  background-image: url(../../../../2019-Signature-Figures/mobile/style/icon/upCoil.png);
+  background-image: url(icon/upCoil.png);
   background-repeat: repeat-x;
 
   -webkit-transform-origin: 0% 0%;
@@ -1312,7 +1312,7 @@ i,u{font-style:normal;text-decoration:none;}
   /*right: auto;*/
   height: 21px;
   width: 100%;
-  background-image: url(../../../../2019-Signature-Figures/mobile/style/icon/downCoil.png);
+  background-image: url(icon/downCoil.png);
   background-repeat: repeat-x;
 
   -webkit-transform-origin: 0% 0%;
@@ -1651,30 +1651,30 @@ i,u{font-style:normal;text-decoration:none;}
 }
 
 .star {
-  -webkit-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/star_mask.png) no-repeat center center;
-  -ms-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/star_mask.png) no-repeat center center;
-  -o-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/star_mask.png) no-repeat center center;
-  -moz-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/star_mask.png) no-repeat center center;
+  -webkit-mask: url(../style/icon/star_mask.png) no-repeat center center;
+  -ms-mask: url(../style/icon/star_mask.png) no-repeat center center;
+  -o-mask: url(../style/icon/star_mask.png) no-repeat center center;
+  -moz-mask: url(../style/icon/star_mask.png) no-repeat center center;
 }
 
 .heart {
-  -webkit-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/heart_mask.png) no-repeat center center;
-  -ms-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/heart_mask.png) no-repeat center center;
-  -o-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/heart_mask.png) no-repeat center center;
-  -moz-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/heart_mask.png) no-repeat center center;
+  -webkit-mask: url(../style/icon/heart_mask.png) no-repeat center center;
+  -ms-mask: url(../style/icon/heart_mask.png) no-repeat center center;
+  -o-mask: url(../style/icon/heart_mask.png) no-repeat center center;
+  -moz-mask: url(../style/icon/heart_mask.png) no-repeat center center;
 }
 .rect {
-  -webkit-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/rect_mask.png) no-repeat center center;
-  -ms-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/rect_mask.png) no-repeat center center;
-  -o-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/rect_mask.png) no-repeat center center;
-  -moz-mask: url(../../../../2019-Signature-Figures/mobile/style/icon/rect_mask.png) no-repeat center center;
+  -webkit-mask: url(../style/icon/rect_mask.png) no-repeat center center;
+  -ms-mask: url(../style/icon/rect_mask.png) no-repeat center center;
+  -o-mask: url(../style/icon/rect_mask.png) no-repeat center center;
+  -moz-mask: url(../style/icon/rect_mask.png) no-repeat center center;
 }
 
 .type3 {
-  -webkit-mask: url(icon/centerblur.png) no-repeat center center;
-  -ms-mask: url(icon/centerblur.png) no-repeat center center;
-  -o-mask: url(icon/centerblur.png) no-repeat center center;
-  -moz-mask: url(icon/centerblur.png) no-repeat center center;
+  -webkit-mask: url(../style/icon/centerblur.png) no-repeat center center;
+  -ms-mask: url(../style/icon/centerblur.png) no-repeat center center;
+  -o-mask: url(../style/icon/centerblur.png) no-repeat center center;
+  -moz-mask: url(../style/icon/centerblur.png) no-repeat center center;
 }
 
 .type3:hover{

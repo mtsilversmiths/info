@@ -989,7 +989,7 @@ FlipBook.prototype = {
 		t.value = Std.string(val);
 	}
 	,setPageCount: function(val) {
-		this.tbPageCount.innerHTML = "/ " + Std.string(val);
+		this.tbPageCount.innerHTML = "/&nbsp;" + Std.string(val);
 	}
 	,cPage: function() {
 		this.zoomAt(0,0);
@@ -2519,7 +2519,7 @@ RunTime.loadPageContents = function(ctx) {
 }
 RunTime.showLoadingLogo = function(loadingUrl) {
 	if(loadingUrl == null || loadingUrl == "") return;
-	RunTime.loadingLogo.innerHTML = "<img src='../../../2017-corporate/mobile/" + loadingUrl + "'>";
+	RunTime.loadingLogo.innerHTML = "<img src='" + loadingUrl + "'>";
 	RunTime.loadingLogo.style.top = (RunTime.clientHeight - RunTime.loadingLogo.clientHeight) / 2 + "px";
 	RunTime.loadingLogo.style.left = (RunTime.clientWidth - RunTime.loadingLogo.clientWidth) / 2 + "px";
 	RunTime.loadingLogo.style.display = "inline";
@@ -2702,7 +2702,7 @@ RunTime.sendEmailByService = function() {
 	js.Lib.window.document.getElementById("subject").setAttribute("value",subject);
 	var m = js.Lib.window.document.getElementById("sharemsg");
 	var msg = m.value;
-	msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/>" + "<br /> <br />" + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + "<img src='../../../2017-corporate/mobile/" + baseUrl + "/" + RunTime.book.pages[0].urlThumb + "' >" + "<a/>";
+	msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/>" + "<br /> <br />" + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + "<img src='" + baseUrl + "/" + RunTime.book.pages[0].urlThumb + "' >" + "<a/>";
 	RunTime.sendService = new XMLHttpRequest();
 	var query = "tomail=" + Std.string(tomail.value) + "&frommail=" + Std.string(frommail.value) + "&subject=" + subject + "&message=" + msg;
 	RunTime.sendService.open("get",RunTime.book.gateway + "?" + query,true);
@@ -2715,7 +2715,7 @@ RunTime.sendEmailByForm = function() {
 	js.Lib.window.document.getElementById("subject").setAttribute("value",subject);
 	var m = js.Lib.window.document.getElementById("sharemsg");
 	var msg = m.value;
-	msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/>" + "<br /> <br />" + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + "<img src='../../../2017-corporate/mobile/" + RunTime.book.pages[0].urlThumb + "' >" + "<a/>";
+	msg += "<br /> <br /> " + Std.string(n.value) + L.s("ShareEmailContent") + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + RunTime.book.shareHref + "<a/>" + "<br /> <br />" + "<a href='" + RunTime.book.shareHref + "' target='_black'>" + "<img src='" + RunTime.book.pages[0].urlThumb + "' >" + "<a/>";
 	var b = js.Lib.window.document.getElementById("sendEmail");
 	b.submit();
 }
@@ -4798,7 +4798,7 @@ core.HtmlHelper.toSnsHtml = function(xml) {
 }
 core.HtmlHelper.toSnsNodeHtml = function(xml) {
 	var s = "<p style='float:left;width:150px;height:20px;'>";
-	s += "<a href='" + xml.get("href") + "'><img style='vertical-align:middle;' src='../../../2017-corporate/mobile/" + RunTime.urlRoot + xml.get("logoUrl") + "'>" + "</a>";
+	s += "<a href='" + xml.get("href") + "'><img style='vertical-align:middle;' src='" + RunTime.urlRoot + xml.get("logoUrl") + "'>" + "</a>";
 	s += "<span onclick=\"RunTime.navigateUrl('" + xml.get("href") + "')\" style='vertical-align:middle;'>" + xml.get("name") + "</span>";
 	s += "</p>";
 	return s;
@@ -4837,7 +4837,7 @@ core.HtmlHelper.toAboutHtml = function(aboutXml,bookinfoXml) {
 	var s = "";
 	s += "<div style='width:100%; height:280px;'>";
 	s += "<div style='width:30%; height:160px; float:left;'>";
-	if(logoUrl != "") s += "<img src='../../../2017-corporate/mobile/" + logoUrl + "'/>";
+	if(logoUrl != "") s += "<img src='" + logoUrl + "'/>";
 	s += "</div>";
 	s += "<div style='width:65%; height:160px; float:left;'>" + aboutUsText + "</a></div>";
 	s += "<div style='width:100%; height:110px;'>" + text + "</div>";
@@ -4846,7 +4846,7 @@ core.HtmlHelper.toAboutHtml = function(aboutXml,bookinfoXml) {
 }
 core.HtmlHelper.toEmailHtml = function() {
 	var s = "";
-	s += "<form id='sendEmail' action='../../../2017-corporate/mobile/" + RunTime.book.gateway + "' method='post'>";
+	s += "<form id='sendEmail' action='" + RunTime.book.gateway + "' method='post'>";
 	s += "<table border='none' class='email'>";
 	s += "<tr><td>" + L.s("To","To") + ":</td><td><input  id='tomail' type='text' name='tomail' /></td></tr>";
 	s += "<tr><td>" + L.s("YourName","Your Name") + ":</td><td><input id='yname' type='text' name='yourName'/></td></tr>";
@@ -5006,14 +5006,14 @@ core.HtmlHelper.toPopupImageHtml = function(item,success) {
 		s = "";
 		s += "<div id=\"popupImage\" style=\"position:absolute; z-index:200;left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; background-color:#ffffff; -webkit-transform: scale(0.2); -webkit-transition: 0s ease-out; \" >";
 		s += "<img src=\"" + Std.string(item.destination) + "\" style=\"width:" + Std.string(w) + "px;height:" + Std.string(h) + "px;\" />";
-		s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+		s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 		s += "</div>";
 	} else {
 		s = "";
 		s += "<div style=\"position:absolute;z-index:200; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; \">";
 		s += "<div style=\"margin:0 auto; \">";
 		s += "<img src=\"" + Std.string(item.destination) + "\" style=\"max-width:" + Std.string(w) + "px;max-height:" + Std.string(h) + "px;\" />";
-		s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+		s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 		s += "</div>";
 		s += "</div>";
 	}
@@ -5043,7 +5043,7 @@ core.HtmlHelper.toPopupVideoHtml = function(item) {
 		s += "</iframe>";
 		s += "</div>";
 	}
-	s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+	s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 	s += "</div>";
 	return s;
 }
@@ -5059,13 +5059,13 @@ core.HtmlHelper.toPopupPageAudiosHtml = function(audio,isLeft) {
 		s += "<div style=\"position:absolute; z-index:202;left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; \">";
 		s += "<audio class=\"video-js\" src=\"" + audio.url + "\" width=\"" + Std.string(Math.round(w)) + "\" height=\"" + Std.string(Math.round(h)) + "\" controls autoplay >";
 		s += "</audio>";
-		s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearLeftBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+		s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearLeftBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 		s += "</div>";
 	} else {
 		s += "<div style=\"position:absolute; z-index:202;left:" + Std.string(RunTime.clientWidth / 2 + left | 0) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; \">";
 		s += "<audio class=\"video-js\" src=\"" + audio.url + "\" width=\"" + Std.string(Math.round(w)) + "\" height=\"" + Std.string(Math.round(h)) + "\" controls autoplay >";
 		s += "</audio>";
-		s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearRightBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+		s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearRightBgAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 		s += "</div>";
 	}
 	return s;
@@ -5079,7 +5079,7 @@ core.HtmlHelper.toPopupAudioHtml = function(item) {
 	s += "<div style=\"position:absolute; z-index:203;left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; \">";
 	s += "<audio class=\"video-js\" src=\"" + Std.string(item.destination) + "\" width=\"" + Std.string(Math.round(w)) + "\" height=\"" + Std.string(Math.round(h)) + "\" controls autoplay >";
 	s += "</audio>";
-	s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+	s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearAudio();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 	s += "</div>";
 	return s;
 }
@@ -5105,7 +5105,7 @@ core.HtmlHelper.toPopupHtml = function(item) {
 	s += Std.string(item.htmlText);
 	s += "</pre>";
 	s += "</div>";
-	s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+	s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 	s += "</div>";
 	return s;
 }
@@ -5120,7 +5120,7 @@ core.HtmlHelper.toBookmarkPopupHtml = function(item) {
 	var top = (RunTime.clientHeight - h) / 2 | 0;
 	var s = "";
 	s += "<div style=\"position:absolute; z-index:104; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px; background-color:#ffffff; text-align:left; \">";
-	s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
+	s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-12px;top:-12px;\" />";
 	s += "</div>";
 	return s;
 }
@@ -5146,7 +5146,7 @@ core.HtmlHelper.toHighLightPopupHtml = function(item,szSaveFunName,szDeleteFunNa
 	var colorB = StringTools.hex(Std.parseInt(results[2]),2);
 	var newColorString = "#" + colorR + colorG + colorB;
 	var s = "";
-	s += "<div style=\"position:absolute; z-index:800; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px;  \">" + "<div style=\"margin:0 0; position:absolute; background-color:black;" + "-webkit-border-radius:10px; border:1px solid #ccc; opacity:0.6;width:300px; height:200px;\">" + "</div>" + "<div style=\"position:absolute;top:10px; left:10px; width:280px;" + "background-color:#ffffff; border:1px solid #ccc;margin:0 0;\">" + "<div style=\"width:280px; height:128px; background:#ffffff; padding-top:22px; \">" + "<div id=\"colorPicker\" style=\"position:absolute; top:0px; left:0px;\"><input type=\"button\" value=\"\" id=\"showColor\" style=\"width:150px; background:" + newColorString + "; border:1px solid #ccc; height:20px;\" onclick=\"showHighlightColor()\" /><input type=\"hidden\" id=\"showVal\" value=\"\"><div id=\"color\" style=\"display:none; position:absolute;top:0px;left:0px; background:#ffffff; z-index:810; \"></div></div>" + "<textarea id=\"textNote\" style=\"width:275px; height:123px; border:0px\">" + Std.string(item.note.text) + "</textarea>" + "</div>" + "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-20px;top:-20px;\" />" + "</div>" + "<div style=\"position:absolute;top:182px; left:10px;width:280px; margin:0 0; \">" + "<img onclick=\"" + szSaveFunName + "()\" src=\"content/images/save.png\" style=\"position:absolute;" + "left:5px; top:-16px;  \"/>" + "<img onclick=\"" + szDeleteFunName + "()\" src=\"content/images/garbage.png\" style=\"position:absolute;" + "left:75px; top:-16px;  \"/>" + "</div>" + "</div>";
+	s += "<div style=\"position:absolute; z-index:800; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px;  \">" + "<div style=\"margin:0 0; position:absolute; background-color:black;" + "-webkit-border-radius:10px; border:1px solid #ccc; opacity:0.6;width:300px; height:200px;\">" + "</div>" + "<div style=\"position:absolute;top:10px; left:10px; width:280px;" + "background-color:#ffffff; border:1px solid #ccc;margin:0 0;\">" + "<div style=\"width:280px; height:128px; background:#ffffff; padding-top:22px; \">" + "<div id=\"colorPicker\" style=\"position:absolute; top:0px; left:0px;\"><input type=\"button\" value=\"\" id=\"showColor\" style=\"width:150px; background:" + newColorString + "; border:1px solid #ccc; height:20px;\" onclick=\"showHighlightColor()\" /><input type=\"hidden\" id=\"showVal\" value=\"\"><div id=\"color\" style=\"display:none; position:absolute;top:0px;left:0px; background:#ffffff; z-index:810; \"></div></div>" + "<textarea id=\"textNote\" style=\"width:275px; height:123px; border:0px\">" + Std.string(item.note.text) + "</textarea>" + "</div>" + "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-20px;top:-20px;\" />" + "</div>" + "<div style=\"position:absolute;top:182px; left:10px;width:280px; margin:0 0; \">" + "<img onclick=\"" + szSaveFunName + "()\" src=\"content/images/save.png\" style=\"position:absolute;" + "left:5px; top:-16px;  \"/>" + "<img onclick=\"" + szDeleteFunName + "()\" src=\"content/images/garbage.png\" style=\"position:absolute;" + "left:75px; top:-16px;  \"/>" + "</div>" + "</div>";
 	return s;
 }
 core.HtmlHelper.toNotePopupHtml = function(item,szSaveFunName,szDeleteFunName) {
@@ -5163,7 +5163,7 @@ core.HtmlHelper.toNotePopupHtml = function(item,szSaveFunName,szDeleteFunName) {
 	var left = (RunTime.clientWidth - w) / 2 | 0;
 	var top = (RunTime.clientHeight - h) / 2 | 0;
 	var s = "";
-	s += "<div style=\"position:absolute; z-index:800; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px;  \">" + "<div style=\"margin:0 0; position:absolute; background-color:black;" + "-webkit-border-radius:10px; border:1px solid #ccc; opacity:0.6;width:300px; height:200px;\">" + "</div>" + "<div style=\"position:absolute;top:10px; left:10px; width:280px;" + "background-color:#ffffff; border:1px solid #ccc;margin:0 0;\">" + "<div style=\"width:280px; height:150px; background:#ffffff\">" + "<textarea id=\"textNote\" style=\"width:275px; height:145px; border:0px\">" + Std.string(item.note.text) + "</textarea>" + "</div>" + "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-20px;top:-20px;\" />" + "</div>" + "<div style=\"position:absolute;top:182px; left:10px;width:280px; margin:0 0; \">" + "<img onclick=\"" + szSaveFunName + "()\" src=\"content/images/save.png\" style=\"position:absolute;" + "left:5px; top:-16px\"/>" + "<img onclick=\"" + szDeleteFunName + "()\" src=\"content/images/garbage.png\" style=\"position:absolute;" + "left:75px; top:-16px\"/>" + "</div>" + "</div>";
+	s += "<div style=\"position:absolute; z-index:800; left:" + Std.string(left) + "px; top:" + Std.string(top) + "px; width:" + Std.string(w) + "px; height:" + Std.string(h) + "px;  \">" + "<div style=\"margin:0 0; position:absolute; background-color:black;" + "-webkit-border-radius:10px; border:1px solid #ccc; opacity:0.6;width:300px; height:200px;\">" + "</div>" + "<div style=\"position:absolute;top:10px; left:10px; width:280px;" + "background-color:#ffffff; border:1px solid #ccc;margin:0 0;\">" + "<div style=\"width:280px; height:150px; background:#ffffff\">" + "<textarea id=\"textNote\" style=\"width:275px; height:145px; border:0px\">" + Std.string(item.note.text) + "</textarea>" + "</div>" + "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-20px;top:-20px;\" />" + "</div>" + "<div style=\"position:absolute;top:182px; left:10px;width:280px; margin:0 0; \">" + "<img onclick=\"" + szSaveFunName + "()\" src=\"content/images/save.png\" style=\"position:absolute;" + "left:5px; top:-16px\"/>" + "<img onclick=\"" + szDeleteFunName + "()\" src=\"content/images/garbage.png\" style=\"position:absolute;" + "left:75px; top:-16px\"/>" + "</div>" + "</div>";
 	return s;
 }
 core.HtmlHelper.toInputPwdHtml = function() {
@@ -5184,7 +5184,7 @@ core.HtmlHelper.toInputUnlockPwdHtml = function() {
 	var pos = "position:absolute;z-index:200; left:" + Std.string(Math.round(left)) + "px; top:" + Std.string(Math.round(top)) + "px;";
 	var s = "";
 	s += "<div id=\"inputBox\" style=\" " + pos + " width:300px; height:120px;background-color:#CCCCCC; \">";
-	s += "<img width=\"24\" height=\"24\" src=../../../2017-corporate/mobile//"content/images/close.png/" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-10px;top:-10px;\" />";
+	s += "<img width=\"24\" height=\"24\" src=\"content/images/close.png\" onclick=\"clearPopupContents();\" style=\"position:absolute;right:-10px;top:-10px;\" />";
 	s += "<p>" + L.s("NeedPassword") + "</p>";
 	s += "<input id=\"tbKeyword\" type=\"password\" style=\"width:120px; height:20px; \"  onkeypress=\"return onUnlockKeyPress(event)\" />";
 	s += "<input type=\"button\" style=\"height:20px; \" value=\"" + L.s("Submit") + "\" onclick=\"unlockPage(); \" />";

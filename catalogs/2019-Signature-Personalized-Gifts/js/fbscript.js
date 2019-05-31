@@ -140,7 +140,7 @@ var hasBasicHtmlVersion=true;
 var callback = function (e){ 
     //Only execute if SWFObject embed was successful
   if(!e.success || !e.ref){ //	alert("No Flash Supported");
-		document.write("<div style='font-family:arial;font-size:14px;padding:50px;background-color:#e5e5e5;color:#666666;position:absolute;width:500px; left:50%; top:50%; transform:translate(-50%,-50%);'><h2 style='color:#333333;margin-top:0;font-size:1.8em'>Sorry , need flash player. </h2><a style='color:#1155cc;' href='http://www.adobe.com/go/getflashplayer'>Get Adobe Flash Player<\/a> it's possible to <a id='linkSEO' style='color:#1155cc;line-height:1.6em;' href='files/basic-html/index.html'>view a simplified version of the book on any device</a>, or you can view the mobile version <a href='../../../2019-Signature-Personalized-Gifts/js/mobile/index.html' style='color:#1155cc'> here </a></div>" ); 
+		document.write("<div style='font-family:arial;font-size:14px;padding:50px;background-color:#e5e5e5;color:#666666;position:absolute;width:500px; left:50%; top:50%; transform:translate(-50%,-50%);'><h2 style='color:#333333;margin-top:0;font-size:1.8em'>Sorry , need flash player. </h2><a style='color:#1155cc;' href='http://www.adobe.com/go/getflashplayer'>Get Adobe Flash Player<\/a> it's possible to <a id='linkSEO' style='color:#1155cc;line-height:1.6em;' href='files/basic-html/index.html'>view a simplified version of the book on any device</a>, or you can view the mobile version <a href='mobile/index.html' style='color:#1155cc'> here </a></div>" ); 
     return false; 
   }  
 };
