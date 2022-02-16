@@ -5,8 +5,8 @@ include_once( 'Mail.php' );
 include_once( 'Mail_Mime/mime.php' );
 
 //Settings 
-$max_allowed_file_size = 100; // size in KB 
-$allowed_extensions = array( "jpg", "jpeg", "gif", "bmp" );
+$max_allowed_file_size = 10000; // size in KB 
+//$allowed_extensions = array( "jpg", "jpeg", "gif", "bmp" );
 $upload_folder = './uploads/'; //<-- this folder must be writeable by the script
 $your_email = 'av@mtsilver.com'; //<<--  update this to your email address
 
@@ -35,17 +35,17 @@ if ( isset( $_POST[ 'submit' ] ) ) {
   }
 
   //------ Validate the file extension -----
-  $allowed_ext = false;
-  for ( $i = 0; $i < sizeof( $allowed_extensions ); $i++ ) {
-    if ( strcasecmp( $allowed_extensions[ $i ], $type_of_uploaded_file ) == 0 ) {
-      $allowed_ext = true;
-    }
-  }
+  //$allowed_ext = false;
+  //for ( $i = 0; $i < sizeof( $allowed_extensions ); $i++ ) {
+  //  if ( strcasecmp( $allowed_extensions[ $i ], $type_of_uploaded_file ) == 0 ) {
+  //    $allowed_ext = true;
+  //  }
+  //}
 
-  if ( !$allowed_ext ) {
-    $errors .= "\n The uploaded file is not supported file type. " .
-    " Only the following file types are supported: " . implode( ',', $allowed_extensions );
-  }
+  //if ( !$allowed_ext ) {
+  //  $errors .= "\n The uploaded file is not supported file type. " .
+  //  " Only the following file types are supported: " . implode( ',', $allowed_extensions );
+  //}
 
   //send the email 
   if ( empty( $errors ) ) {
