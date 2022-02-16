@@ -123,6 +123,7 @@ if ( !empty( $errors ) ) {
 ?>
 <form method="POST" name="email_form_with_php" 
 action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
+	<p><img src="media/MTSS_logo.png" width="400" alt=""/></p>
   <p>
     <label for='name'>Name: </label>
     <br>
