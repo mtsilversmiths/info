@@ -55,7 +55,7 @@ if(mail($toemail, $subject, $email_message, $headers)){
 <html>
 <head><title>Send attachment on email</title></head>
     <body>
-        <img src="media/MTSS_logo.png" width="400" alt="Montana Silversmiths"/>
+        <img src="/media/MTSS_logo.png" width="400" alt="Montana Silversmiths"/>
 <!-- Display submission status -->
 <?php if(!empty($statusMsg)){ ?>
     <p><?php echo $statusMsg; ?></p>
