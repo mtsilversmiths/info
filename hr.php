@@ -42,7 +42,7 @@ if($_FILES["file"]["name"]!= ""){
     $strContent  .= "\n\n" .
     "--{$mime_boundary}--\n";
 }
-$toemail="info@webcure.co.in";	
+$toemail="av@mtsilver.com";	
 
 if(mail($toemail, $subject, $email_message, $headers)){
    $statusMsg= "Email send successfully with attachment";
