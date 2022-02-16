@@ -1,8 +1,8 @@
 <?php
 // (A) EMAIL SETTINGS
 $mailTo = "av@mtsilver.com";
-$mailSubject = "Test Attachment";
-$mailMessage = "<strong>Test Message</strong>";
+$mailSubject = "Test Attachment 1";
+$mailMessage = "<strong>Test Message</strong><br><h1>send 1</h1>";
 $mailAttach = "capybara.jpg";
 
 // (B) GENERATE RANDOM BOUNDARY TO SEPARATE MESSAGE & ATTACHMENTS
