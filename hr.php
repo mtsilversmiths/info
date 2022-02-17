@@ -11,12 +11,11 @@ if ( isset( $_FILES[ "file" ][ "name" ] ) ) {
   $email_message = '<h2>Contact Request Submitted</h2>
                     <p><b>Name:</b> ' . $name . '</p>
                     <p><b>Email:</b> ' . $email . '</p>
-                    <p><b>Subject:</b> ' . $subject . '</p>
                     <p><b>Message:</b><br/>' . $message . '</p>';
   $email_message .= "Please find the attachment";
   $semi_rand = md5( uniqid( time() ) );
-  $headers = "From: " . $toemail;
-  $headers .= "Reply-To: " . $email;
+  $headers = "From: " . $fromemail . "\n";
+  $headers .= "Reply-To: " . $email . "\n";
   $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
   $headers .= "\nMIME-Version: 1.0\n" .
