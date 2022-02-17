@@ -18,7 +18,7 @@ if ( isset( $_FILES[ "file" ][ "name" ] ) ) {
   $headers .= "Reply-To: " . $email . "\r\n";
   $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
-  $headers .= "\nMIME-Version: 1.0\r\n" .
+  $headers .= "MIME-Version: 1.0\r\n" .
   "Content-Type: multipart/mixed;\r\n" .
   " boundary=\"{$mime_boundary}\"";
 
