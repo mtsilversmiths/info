@@ -14,7 +14,7 @@ if ( isset( $_FILES[ "file" ][ "name" ] ) ) {
                     <p><b>Message:</b><br/>' . $message . '</p>';
   $email_message .= "Please find the attachment";
   $semi_rand = md5( uniqid( time() ) );
-  $headers = "From: HR Submission <" . $fromemail . ">\r\n";
+  $headers = "From: " . $fromemail . "\r\n";
   $headers .= "Reply-To: " . $email . "\r\n";
   $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
