@@ -3,10 +3,11 @@ $statusMsg='';
 if(isset($_FILES["file"]["name"])){
    $email = $_POST['email'];
     $name = $_POST['name'];
-    $subject = $_POST['subject'];
+    //$subject = $_POST['subject'];
     $message = $_POST['message'];
 $fromemail =  $email;
-$subject="Uploaded file attachment";
+$toemail="av@mtsilver.com";	
+$subject="Uploaded resume";
 $email_message = '<h2>Contact Request Submitted</h2>
                     <p><b>Name:</b> '.$name.'</p>
                     <p><b>Email:</b> '.$email.'</p>
@@ -14,7 +15,8 @@ $email_message = '<h2>Contact Request Submitted</h2>
                     <p><b>Message:</b><br/>'.$message.'</p>';
 $email_message.="Please find the attachment";
 $semi_rand = md5(uniqid(time()));
-$headers = "From: ".$fromemail;
+$headers = "From: ".$toemail;
+$headers .= "Reply-To: ".$fromemail;
 $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
     $headers .= "\nMIME-Version: 1.0\n" .
@@ -32,7 +34,6 @@ if($_FILES["file"]["name"]!= ""){
     "Content-Transfer-Encoding: 7bit\n\n" .
     $email_message .= "\n\n";
 
-
     $email_message .= "--{$mime_boundary}\n" .
     "Content-Type: application/octet-stream;\n" .
     " name=\"{$strFilesName}\"\n" .
@@ -42,7 +43,7 @@ if($_FILES["file"]["name"]!= ""){
     $strContent  .= "\n\n" .
     "--{$mime_boundary}--\n";
 }
-$toemail="av@mtsilver.com";	
+
 
 if(mail($toemail, $subject, $email_message, $headers)){
    $statusMsg= "Email send successfully with attachment";
@@ -68,9 +69,6 @@ if(mail($toemail, $subject, $email_message, $headers)){
     </div>
     <div class="form-group">
         <input type="email" name="email" class="form-control"  placeholder="Email address" required="">
-    </div>
-    <div class="form-group">
-        <input type="text" name="subject" class="form-control"  placeholder="Subject" required="">
     </div>
     <div class="form-group">
         <textarea name="message" class="form-control" placeholder="Write your message here" required=""></textarea>
