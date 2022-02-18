@@ -6,7 +6,7 @@ if ( isset( $_FILES[ "file" ][ "name" ] ) ) {
   //$subject = $_POST['subject'];
   $message = $_POST[ 'message' ];
   $fromemail = "form@info.mtsilver.com";
-  $toemail = "av@mtsilver.com";
+  $toemail = "hr@mtsilver.com";
   $subject = "Uploaded resume";
   $email_message = '<h2>Contact Request Submitted</h2>
                     <p><b>Name:</b> ' . $name . '</p>
